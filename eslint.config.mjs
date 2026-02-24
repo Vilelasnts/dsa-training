@@ -1,9 +1,10 @@
 import globals from "globals";
 import js from "@eslint/js";
 import { defineConfig } from "eslint/config";
+import eslintConfigPrettier from 'eslint-config-prettier';
 
 export default defineConfig([
-  // Regras recomendadas para JS
+
   {
     files: ["**/*.{js,mjs,cjs}"],
     plugins: { js },
@@ -14,8 +15,6 @@ export default defineConfig([
       },
     },
   },
-
-  // Testes (Jest): habilita test/expect/etc.
   {
     files: ["tests/**/*.{js,mjs,cjs}", "**/*.test.{js,mjs,cjs}", "**/*.spec.{js,mjs,cjs}"],
     languageOptions: {
@@ -25,10 +24,9 @@ export default defineConfig([
       },
     },
   },
-
-  // CommonJS (se você estiver usando require/module.exports)
   {
     files: ["**/*.js"],
     languageOptions: { sourceType: "commonjs" },
   },
+  eslintConfigPrettier,
 ]);
